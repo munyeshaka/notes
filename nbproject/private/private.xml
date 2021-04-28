@@ -3,7 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/aimab/.project/BIU/AGL/notes/src/view/notesV.java</file>
             <file>file:/C:/Users/aimab/.project/BIU/AGL/notes/src/modele/notesM.java</file>
+            <file>file:/C:/Users/aimab/.project/BIU/AGL/notes/src/view/login.java</file>
+            <file>file:/C:/Users/aimab/.project/BIU/AGL/notes/src/modele/user.java</file>
+            <file>file:/C:/Users/aimab/.project/BIU/AGL/notes/src/controle/factory.java</file>
+            <file>file:/C:/Users/aimab/.project/BIU/AGL/notes/src/controle/dbConn.java</file>
+            <file>file:/C:/Users/aimab/.project/BIU/AGL/notes/src/view/signup.java</file>
+            <file>file:/C:/Users/aimab/.project/BIU/AGL/notes/src/view/ajouterNotes.java</file>
         </group>
     </open-files>
 </project-private>

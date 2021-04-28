@@ -6,7 +6,6 @@ import modele.*;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
-import view.notesV;
 
 
 public class factory  {
@@ -46,24 +45,29 @@ public static void insertUser(user u){
  public static void insertNote(notesM n){
        // conn = DbConnection.getConnection();
                 try{
-       
-                        conn = dbConn.getConnection();
-                            SimpleDateFormat sp = new SimpleDateFormat("yyyy-MM-dd");
-                //appliquer le format obtenue a jchooser
-                String dates = sp.format(n.getdate_note());
-                
-                pstm = conn.prepareStatement(
+                    conn = dbConn.getConnection();
+                   // SimpleDateFormat sp = new SimpleDateFormat("yyyy-MM-dd");
+                    //appliquer le format obtenue a jchooser
+                    //String dates = sp.format(n.getDate_note());
+                    
+                    pstm = conn.prepareStatement(
+                            
                         "INSERT INTO user(title, date_note, txtfoto, user) values (?,?,?,?)");
-                pstm.setString(1, n.getTitle());
-                pstm.setString(2, dates);
-                pstm.setString(3, n.getTextNote());
-                pstm.setInt(4, n.getId_user());
-                pstm.executeUpdate();
-                pstm.close();
+                            //"select id_user = ? from user where username = ?, password = ?");
+                
+                    pstm.setString(1, n.getTitle());
+                    pstm.setString(2, n.getDate_note());
+                    pstm.setString(3, n.getTextfoto());
+                    pstm.setInt(4, n.getId_user());
+                    pstm.executeUpdate();
+                    pstm.close();
                             
-                        }catch(SQLException e){
-                            
-                        }
+                }catch(SQLException e){
+                    JOptionPane.showMessageDialog(null,"Probleme d'insertion. Verifier si tout les champs sont bien saisie "+e.getLocalizedMessage());
+                    System.err.print(e);
+                }
+                
+                
     }
 
 /*

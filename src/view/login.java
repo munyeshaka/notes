@@ -6,14 +6,12 @@
 package view;
 
 import controle.dbConn;
-import controle.factory;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import modele.user;
 
 /**
  *
@@ -27,10 +25,17 @@ public class login extends javax.swing.JFrame {
     private Connection conn = null;
     private String userName;
     private String passWord;
-    private String profil;
-    private notesV tbb;
-    public login() {
+    public ajouterNotes aN ;
+    public int user;
+    
+    public int id;
+    public login(int i) {
+        this.id = i;
         initComponents();
+    }
+
+    private login() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -161,16 +166,13 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBnAnnuler2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnAnnuler2ActionPerformed
-        login l = new login();
+        login l = new login(id);
         l.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jBnAnnuler2ActionPerformed
 
     private void jBnConnectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnConnectionActionPerformed
-//        user u = new user();
-//        u.setUsername(jTFuser.getText());
-//        u.setPassword(jPassword.getText());
-        
+
         try{
             userName = jTFuser.getText();
             passWord = jPassword.getText();
@@ -182,11 +184,13 @@ public class login extends javax.swing.JFrame {
                        ptm = conn.prepareStatement(query);
                        ptm.setString(1,userName);
                        ptm.setString(2, passWord);
-                       
+                      
                        rs = ptm.executeQuery();
                        if(rs.next()) {
+                           user = rs.getInt("id_user");
+                           notesV n = new notesV(id);
                            this.dispose();
-                           notesV n = new notesV();
+                           //for bemuc//ajouterNotes aN = new ajouterNotes();
                            n.setVisible(true);
                        } else {
                             JOptionPane.showMessageDialog(null,"Username ou password n'est pas correct !!");

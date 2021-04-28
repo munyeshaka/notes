@@ -12,10 +12,9 @@ import java.util.Date;
  */
 public class notesV extends javax.swing.JFrame {
 
-    /**
-     * Creates new form notes
-     */
-    public notesV() {
+    public int id;
+    public notesV(int i) {
+        this.id = i;
         initComponents();
     }
 
@@ -267,13 +266,14 @@ public class notesV extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        ajouterNotes n = new ajouterNotes();
-        n.setVisible(true);
+        ajouterNotes a = new ajouterNotes(id);
+        a.setVisible(true);
         this.setVisible(false);
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        login l = new login();
+        login l = new login(id);
         l.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -309,7 +309,7 @@ public class notesV extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new notesV().setVisible(true);
+                //new notesV().setVisible(true);
             }
         });
     }

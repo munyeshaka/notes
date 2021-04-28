@@ -161,13 +161,13 @@ public class signup extends javax.swing.JFrame {
       u.setPassword(jFpassword.getText());
   
       factory.insertUser(u);
-      ajouterNotes n = new ajouterNotes();
+      ajouterNotes n = new ajouterNotes(id);
       n.setVisible(true);
       this.setVisible(false);
     }//GEN-LAST:event_jBnInscriptionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        login l = new login();
+        login l = new login(id);
         l.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
