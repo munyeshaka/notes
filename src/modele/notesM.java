@@ -5,26 +5,12 @@ package modele;
  *
  * @author aimab
  */
-public class notesM extends user{
+public class notesM {
+    private int user;
     private String title,date_note, Textfoto;
-    
-    public notesM() {
-        super();
-    }
 
-    @Override
-    public String getPassword() {
-        return super.getPassword(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getUsername() {
-        return super.getUsername(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getId_user() {
-        return super.getId_user(); //To change body of generated methods, choose Tools | Templates.
+    public int getUser() {
+        return user;
     }
 
     public String getTitle() {
@@ -39,6 +25,10 @@ public class notesM extends user{
         return Textfoto;
     }
 
+    public void setUser(int user) {
+        this.user = user;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -50,4 +40,5 @@ public class notesM extends user{
     public void setTextfoto(String Textfoto) {
         this.Textfoto = Textfoto;
     }
-}
+    
+ }

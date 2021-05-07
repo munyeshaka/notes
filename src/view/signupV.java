@@ -12,10 +12,10 @@ import modele.user;
  *
  * @author aimab
  */
-public class signup extends javax.swing.JFrame {
+public class signupV extends javax.swing.JFrame {
 
-    
-    public signup() {
+    public int id;
+    public signupV() {
         initComponents();
     }
 
@@ -148,7 +148,7 @@ public class signup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBnAnnuler1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnAnnuler1ActionPerformed
-        signup s = new signup();
+        signupV s = new signupV();
         s.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jBnAnnuler1ActionPerformed
@@ -156,18 +156,18 @@ public class signup extends javax.swing.JFrame {
     //=========Inscription============
     private void jBnInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnInscriptionActionPerformed
         
-      user u = new user();
-      u.setUsername(jFuser.getText());
-      u.setPassword(jFpassword.getText());
-  
-      factory.insertUser(u);
-      ajouterNotes n = new ajouterNotes(id);
-      n.setVisible(true);
-      this.setVisible(false);
+        user u = new user();
+        u.setUsername(jFuser.getText());
+        u.setPassword(jFpassword.getText());
+        factory.insertUser(u);
+        
+        LoginV d = new LoginV(); 
+        d.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jBnInscriptionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        login l = new login(id);
+        LoginV l = new LoginV();
         l.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -189,20 +189,21 @@ public class signup extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signupV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signupV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signupV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signupV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new signup().setVisible(true);
+                new signupV().setVisible(true);
             }
         });
     }
