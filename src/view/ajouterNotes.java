@@ -35,6 +35,7 @@ public class ajouterNotes extends javax.swing.JFrame {
         jBnAnnuler = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,7 +54,10 @@ public class ajouterNotes extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(17, 29, 48));
 
+        jTPnote.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane2.setViewportView(jTPnote);
+
+        jTFtitle.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,11 +119,11 @@ public class ajouterNotes extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTFtitle, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTFtitle, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBnAjouter)
@@ -148,21 +152,25 @@ public class ajouterNotes extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setText("<  retour");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(286, 286, 286)
+                        .addComponent(jButton1)
+                        .addGap(205, 205, 205)
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(92, 92, 92)
+                        .addGap(30, 30, 30)
                         .addComponent(jBnDeconnexion))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(70, 70, 70))
         );
         jPanel1Layout.setVerticalGroup(
@@ -171,7 +179,8 @@ public class ajouterNotes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jBnDeconnexion))
+                    .addComponent(jBnDeconnexion)
+                    .addComponent(jButton1))
                 .addGap(22, 22, 22)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
@@ -200,8 +209,6 @@ public class ajouterNotes extends javax.swing.JFrame {
     private void jBnAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnAjouterActionPerformed
        notesM n = new notesM();
        n.setTitle(jTFtitle.getText());
-       //n.setDate_note(jDate.getDateFormatString());
-       //n.setDate_note(f);
        n.setTextfoto(jTPnote.getText());
        n.setUser(id);
   
@@ -265,6 +272,7 @@ public class ajouterNotes extends javax.swing.JFrame {
     private javax.swing.JButton jBnAjouter;
     private javax.swing.JButton jBnAnnuler;
     private javax.swing.JButton jBnDeconnexion;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

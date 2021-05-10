@@ -4,14 +4,17 @@ package controle;
 //import java.sql.SQLException;
 import modele.*;
 import java.sql.*;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class factory  {
+    
 private static Connection conn = null;
+private static Statement stm;
 private static PreparedStatement pstm = null;
-   
-   
+private static ResultSet rs = null;
+
+  
 public static void insertUser(user u){
 
     try {
@@ -46,32 +49,15 @@ public static void insertUser(user u){
                 try{
                     conn = dbConn.getConnection();
                     
-                    //SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-                    //Date date = new Date(System.currentTimeMillis());
-                    
-                    //String dates = (formatter.format(date));
-                    //SimpleDateFormat sp = new SimpleDateFormat("yyyy-MM-dd");
-                    //appliquer le format obtenue a jchooser
-                    //String dates = sp.format(n.getDate_note());
-                    
                     java.util.Date date=new java.util.Date();
                     java.sql.Date dates=new java.sql.Date(date.getTime());
-                    //java.sql.Timestamp sqlTime=new java.sql.Timestamp(date.getTime());
-			
-                    //PreparedStatement ps=con.prepareStatement("insert into record (date,time) values(?,?)");
-                    //ps.setDate(1,sqlDate);
-                    //ps.setTimestamp(2,sqlTime);
-                    
-                    
-                    
+                   
                     pstm = conn.prepareStatement(
                             
                         "INSERT INTO notes(title, date_note, txtfoto, user) values (?,?,?,?)");
-                            //"select id_user = ? from user where username = ?, password = ?");
-                
+                          
                     pstm.setString(1, n.getTitle());
                     pstm.setDate(2, dates);
-                    //pstm.setString(2, dates);
                     pstm.setString(3, n.getTextfoto());
                     pstm.setInt(4, n.getUser());
                     pstm.executeUpdate();
@@ -85,11 +71,95 @@ public static void insertUser(user u){
                 
     }
 
-/*
-public static void updateUser(user u){}
-public static void deleteUser(user u){}
+public static void updateNotes(notesM n){
+        try{
 
-   */
+            if(
+                    n.getTitle().equals("")
+                    ||n.getTextfoto().equals("")) {
+
+                      JOptionPane.showMessageDialog(null, "Cliquer sur une ligne dans le tableau SVP !! ");
+            }else{
+                if(JOptionPane.showConfirmDialog(null,"Voulez-vous vraiment modifier??","Modification", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
+                    conn = dbConn.getConnection();
+                    //stm = conn.createStatement();
+                    java.util.Date date=new java.util.Date();
+                    java.sql.Date dates=new java.sql.Date(date.getTime());
+                    
+                    String Requete="UPDATE notes SET title='"+n.getTitle()+"',"
+                        + "date_note='"+dates+"',"
+                        + "txtfoto='"+n.getTextfoto()+"'"
+                        + "WHERE id_note='"+n.getIdNote()+"'";
+                    
+                    pstm=conn.prepareStatement(Requete);
+                    
+                    //setUse
+                    //pstm.setInt(4, n.getUser());
+                    pstm.executeUpdate(Requete);
+                    pstm.close();
+            
+                    //ActualiserAffichage();
+                    JOptionPane.showConfirmDialog(null, "Modification effectuée avec succés !! ", "Modification", JOptionPane.OK_OPTION);
+
+                    //Vider();
+            }
+            } 
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erreur de modification. "+e.getLocalizedMessage());
+            System.err.print(e);
+        }       
+ }
+ 
+public static void deleteNotes(notesM n){
+    try {
+        if(
+                n.getTitle().equals("")
+                ||n.getTextfoto().equals("")) {
+            JOptionPane.showMessageDialog(null, "Cliquer sur une ligne dans le tableau SVP !! ");
+        }else{
+            if(JOptionPane.showConfirmDialog(null,"Voulez-vous vraiment Supprimer??","Suppression", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION){
+            
+                conn = dbConn.getConnection();
+                stm = conn.createStatement(); 
+                String Requete="delete from notes  WHERE id_note='"+n.getIdNote()+"'";
+                stm.executeUpdate(Requete);
+            JOptionPane.showConfirmDialog(null, "Suppression effectuée avec succés !! ", "Modification", JOptionPane.OK_OPTION);
+}
+            } 
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erreur de Suppression. "+e.getLocalizedMessage());
+            System.err.print(e);
+        }       
+ }
+
+public static ArrayList<notesM> AfficherNotes(int i)
+    {
+        ArrayList<notesM> klit = new ArrayList();
+        notesM nt = new notesM();
+        
+        try{
+            
+            conn = dbConn.getConnection();
+            stm = conn.createStatement();
+            rs = stm.executeQuery("select id_note, title,txtfoto, date_note from notes where user = '"+i+"'");
+            
+            while(rs.next()){
+                    nt = new notesM();
+                    nt.setTitle(rs.getString("title"));
+                    nt.setTextfoto(rs.getString("txtfoto"));
+                    nt.setDate_note(rs.getString("date_note"));
+                    nt.setIdNote(rs.getString("id_note"));
+                    
+                    klit.add(nt);
+            }
+            }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Probleme d'affichage"+e.getLocalizedMessage());
+            }
+        
+        return klit;
+}
+
+   
    /*
  public int addRecordpatient(User a)
     {

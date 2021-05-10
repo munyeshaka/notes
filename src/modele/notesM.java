@@ -7,7 +7,11 @@ package modele;
  */
 public class notesM {
     private int user;
-    private String title,date_note, Textfoto;
+    private String title,date_note, Textfoto, idNote;
+
+    public String getIdNote() {
+        return idNote;
+    }
 
     public int getUser() {
         return user;
@@ -39,6 +43,10 @@ public class notesM {
 
     public void setTextfoto(String Textfoto) {
         this.Textfoto = Textfoto;
+    }
+
+    public void setIdNote(String idNote) {
+        this.idNote = idNote;
     }
     
  }
