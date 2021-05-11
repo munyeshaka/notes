@@ -14,7 +14,7 @@ import modele.user;
  */
 public class signupV extends javax.swing.JFrame {
 
-    public int id;
+    //public int id;
     public signupV() {
         initComponents();
     }
