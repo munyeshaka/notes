@@ -13,7 +13,6 @@ private static Connection conn = null;
 private static Statement stm;
 private static PreparedStatement pstm = null;
 private static ResultSet rs = null;
-
   
 public static void insertUser(user u){
 
@@ -64,7 +63,7 @@ public static void insertUser(user u){
                     pstm.close();
                             
                 }catch(SQLException e){
-                    JOptionPane.showMessageDialog(null,"Probleme d'insertion. Verifier si tout les champs sont bien saisie "+e.getLocalizedMessage());
+                    JOptionPane.showMessageDialog(null,"Probleme d'enregistrement. Verifier si tout les champs sont bien saisie "+e.getLocalizedMessage());
                     System.err.print(e);
                 }
                 
@@ -97,9 +96,7 @@ public static void updateNotes(notesM n){
                     //pstm.setInt(4, n.getUser());
                     pstm.executeUpdate(Requete);
                     pstm.close();
-            
-                    //ActualiserAffichage();
-                    JOptionPane.showConfirmDialog(null, "Modification effectuée avec succés !! ", "Modification", JOptionPane.OK_OPTION);
+                    JOptionPane.showMessageDialog(null, "Modification effectuée avec succés !! ", "Modification", JOptionPane.OK_OPTION);
 
                     //Vider();
             }
@@ -123,7 +120,7 @@ public static void deleteNotes(notesM n){
                 stm = conn.createStatement(); 
                 String Requete="delete from notes  WHERE id_note='"+n.getIdNote()+"'";
                 stm.executeUpdate(Requete);
-            JOptionPane.showConfirmDialog(null, "Suppression effectuée avec succés !! ", "Modification", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(null, "Suppression effectuée avec succés !! ", "Modification", JOptionPane.OK_OPTION);
 }
             } 
         } catch (SQLException e) {
@@ -141,7 +138,7 @@ public static ArrayList<notesM> AfficherNotes(int i)
             
             conn = dbConn.getConnection();
             stm = conn.createStatement();
-            rs = stm.executeQuery("select id_note, title,txtfoto, date_note from notes where user = '"+i+"'");
+            rs = stm.executeQuery("select id_note, title,txtfoto, date_note from notes where user = '"+i+"' ORDER BY id_note DESC");
             
             while(rs.next()){
                     nt = new notesM();
@@ -159,7 +156,6 @@ public static ArrayList<notesM> AfficherNotes(int i)
         return klit;
 }
 
-   
    /*
  public int addRecordpatient(User a)
     {
